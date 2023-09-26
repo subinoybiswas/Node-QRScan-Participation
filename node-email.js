@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const port = process.env.PORT || 3000;
+require("dotenv").config();
 
 // Middleware to parse URL-encoded and JSON request bodies
 app.use(express.urlencoded({ extended: false }));
@@ -14,8 +15,8 @@ app.get("/data", async (req, res) => {
   const phone = req.query.phone;
 
   // Replace with your Google Apps Script Web App URL
-  const appsScriptUrl =
-    process.env.URL;
+
+  const appsScriptUrl = process.env.URL;
 
   try {
     // Send an HTTP POST request to your Google Apps Script with the extracted data
@@ -31,4 +32,5 @@ app.get("/data", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+  // console.log(typeof process.env.URL);
 });
