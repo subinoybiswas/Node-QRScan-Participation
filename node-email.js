@@ -12,7 +12,8 @@ app.get("/data", async (req, res) => {
   // Extract query parameters from the URL
   const name = req.query.name;
   const email = req.query.email;
-  const phone = req.query.phone;
+  const year = req.query.year;
+  const stream = req.query.stream;
 
   // Replace with your Google Apps Script Web App URL
 
@@ -20,7 +21,12 @@ app.get("/data", async (req, res) => {
 
   try {
     // Send an HTTP POST request to your Google Apps Script with the extracted data
-    const response = await axios.post(appsScriptUrl, { name, email, phone });
+    const response = await axios.post(appsScriptUrl, {
+      name,
+      email,
+      year,
+      stream,
+    });
     res
       .status(200)
       .send("POST request sent successfully to Google Apps Script.");
